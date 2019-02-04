@@ -27,21 +27,24 @@ class DatePicker extends Component {
         <button onClick={e => this.updateMonth(-1)}>-</button>
         <button onClick={e => this.updateMonth(1)}>+</button>
         <table className="calendar">
+          {/*MO, YR*/}
           <caption>
             {MONTHS[this.state.sel.getMonth()]}, {this.state.sel.getFullYear()}
           </caption>
           <tbody>
-            {/* days of the week - column names */}
+            {/* Su Mo Tu We Th Fr Sa */}
             <tr>
               {DAYS.map(day => {
                 return <td key={day}>{day}</td>;
               })}
             </tr>
-            {/* dates in the month - rows */}
+            {/* days in the month */}
             {getWeeklyData(this.state.sel).map(week => (
               <tr key={week[0][1]}>
                 {week.map((day, i) => {
-                  // TODO: make this td its own component!
+                  {
+                    /*make this td its own component*/
+                  }
                   return (
                     <td key={i}>
                       <span>{day[1]}</span>
