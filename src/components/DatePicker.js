@@ -8,7 +8,7 @@ class DatePicker extends Component {
     start: null, // selected start date
     end: null, // selected end date
     now: new Date(), // current date
-    sel: new Date() // user's selected date
+    sel: new Date() // user's selected timeframe
   };
 
   // diff is the change in month -- should either be 1 or -1 ¯\_(ツ)_/¯
