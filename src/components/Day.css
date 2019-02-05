@@ -1,7 +1,21 @@
 .past {
-  color: grey;
+  color: lightgrey;
+}
+
+.range {
+  color: blue;
+  background-color: lightblue;
 }
 
 .selected {
   color: blue;
+  background-color: lightblue;
+}
+
+span {
+  font-weight: bold;
+}
+
+span:hover {
+  cursor: pointer;
 }
