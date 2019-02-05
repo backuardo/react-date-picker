@@ -53,6 +53,11 @@ class DatePicker extends Component {
       return;
     }
 
+    // check if start & end already selected
+    if (this.state.start && this.state.end) {
+      return;
+    }
+
     this.setState({ hov: date });
   };
 
@@ -68,12 +73,12 @@ class DatePicker extends Component {
     const startTime = this.state.start && this.state.start.getTime();
     const endTime = this.state.end && this.state.end.getTime();
 
-    if (dateTime === startTime || dateTime === endTime) {
+    if (date < this.state.now) {
+      return "past"; // invalid selection
+    } else if (dateTime === startTime || dateTime === endTime) {
       return "selected"; // selected start or end dates
     } else if (startTime < dateTime && dateTime < endTime) {
       return "range"; // between start and end dates
-    } else if (date < this.state.now) {
-      return "past"; // invalid selection
     } else if (startTime && startTime < dateTime && dateTime < hovTime) {
       return "range"; // between start and hover dates
     } else {
