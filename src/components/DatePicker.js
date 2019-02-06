@@ -1,8 +1,13 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 import Day from "./Day";
 import getWeeklyData from "../lib/getWeeklyData";
 import { MONTHS, DAYS } from "../constants";
 import "./DatePicker.css";
+
+const Calendar = styled.table`
+  margin: 0 auto;
+`;
 
 class DatePicker extends Component {
   state = {
@@ -63,6 +68,8 @@ class DatePicker extends Component {
 
   // get className for given day
   getDateStyle = day => {
+    if (!day) return "";
+
     const date = new Date(
       this.state.sel.getFullYear(),
       this.state.sel.getMonth(),
@@ -91,7 +98,7 @@ class DatePicker extends Component {
       <div className="container">
         <button onClick={e => this.updateSel(-1)}>-</button>
         <button onClick={e => this.updateSel(1)}>+</button>
-        <table className="calendar">
+        <Calendar>
           {/*MO, YR*/}
           <caption>
             {MONTHS[this.state.sel.getMonth()]}, {this.state.sel.getFullYear()}
@@ -118,7 +125,7 @@ class DatePicker extends Component {
               </tr>
             ))}
           </tbody>
-        </table>
+        </Calendar>
       </div>
     );
   }
