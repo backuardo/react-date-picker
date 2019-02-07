@@ -3,10 +3,32 @@ import styled from "styled-components";
 import Day from "./Day";
 import getWeeklyData from "../lib/getWeeklyData";
 import { MONTHS, DAYS } from "../constants";
-import "./DatePicker.css";
+
+const Picker = styled.div`
+  border-radius: 3px;
+  box-shadow: 0 2px 15px 0 rgba(210, 214, 220, 0.5);
+  width: 200px;
+  margin: 0 auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+`;
 
 const Calendar = styled.table`
   margin: 0 auto;
+`;
+
+const ArrowButton = styled.button`
+  border: none;
+  outline: none;
+  margin: 9px;
+  font-size: 16px;
+
+  :hover {
+    cursor: pointer;
+    outline: none;
+    font-weight: bold;
+    color: #606fe1;
+  }
 `;
 
 class DatePicker extends Component {
@@ -44,6 +66,7 @@ class DatePicker extends Component {
       this.setState({ start: date });
     } else {
       this.setState({ end: date });
+      this.props.update(this.state.start, date);
     }
   };
 
@@ -68,7 +91,7 @@ class DatePicker extends Component {
 
   // get className for given day
   getDateStyle = day => {
-    if (!day) return "";
+    if (!day) return "none";
 
     const date = new Date(
       this.state.sel.getFullYear(),
@@ -86,7 +109,7 @@ class DatePicker extends Component {
       return "selected"; // selected start or end dates
     } else if (startTime < dateTime && dateTime < endTime) {
       return "range"; // between start and end dates
-    } else if (startTime && startTime < dateTime && dateTime < hovTime) {
+    } else if (startTime && startTime < dateTime && dateTime <= hovTime) {
       return "range"; // between start and hover dates
     } else {
       return "";
@@ -95,13 +118,13 @@ class DatePicker extends Component {
 
   render() {
     return (
-      <div className="container">
-        <button onClick={e => this.updateSel(-1)}>-</button>
-        <button onClick={e => this.updateSel(1)}>+</button>
+      <Picker>
         <Calendar>
           {/*MO, YR*/}
           <caption>
+            <ArrowButton onClick={e => this.updateSel(-1)}>←</ArrowButton>
             {MONTHS[this.state.sel.getMonth()]}, {this.state.sel.getFullYear()}
+            <ArrowButton onClick={e => this.updateSel(1)}>→</ArrowButton>
           </caption>
           <tbody>
             {/* Su Mo Tu We Th Fr Sa */}
@@ -126,7 +149,7 @@ class DatePicker extends Component {
             ))}
           </tbody>
         </Calendar>
-      </div>
+      </Picker>
     );
   }
 }

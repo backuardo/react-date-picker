@@ -1,14 +1,27 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 import DatePicker from "./DatePicker";
-import "./App.css";
+
+const AppContainer = styled.div`
+  text-align: center;
+`;
 
 class App extends Component {
+  state = {
+    start: "Start date",
+    end: "End date"
+  };
+
+  updateTimes = (start, end) => {
+    this.setState({ start, end });
+  };
+
   render() {
     return (
-      <div className="app">
+      <AppContainer>
         <h1>DATE-PICKER</h1>
-        <DatePicker />
-      </div>
+        <DatePicker update={this.updateTimes} />
+      </AppContainer>
     );
   }
 }

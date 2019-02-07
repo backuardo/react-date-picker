@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 const DayTile = styled.td`
-  font-weight: bold;
+  border: solid 1px #eff0fc;
+  border-radius: 3px;
 
   :hover {
     cursor: pointer;
+    font-weight: bold;
   }
 
   &.past {
@@ -13,13 +15,17 @@ const DayTile = styled.td`
   }
 
   &.range {
-    color: blue;
-    background-color: lightblue;
+    color: #111111;
+    background-color: #cfd3f6;
   }
 
   &.selected {
-    color: blue;
-    background-color: lightblue;
+    color: #111111;
+    background-color: #9fa8ed;
+  }
+
+  &.none {
+    border: none;
   }
 `;
 
