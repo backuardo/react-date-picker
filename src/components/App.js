@@ -8,8 +8,8 @@ const AppContainer = styled.div`
 
 class App extends Component {
   state = {
-    start: "Start date",
-    end: "End date"
+    start: null,
+    end: null
   };
 
   updateTimes = (start, end) => {
@@ -19,8 +19,8 @@ class App extends Component {
   render() {
     return (
       <AppContainer>
-        <h1>DATE-PICKER</h1>
-        <DatePicker update={this.updateTimes} />
+        <h1>date-picker</h1>
+        <DatePicker handleUpdate={this.updateTimes} />
       </AppContainer>
     );
   }
