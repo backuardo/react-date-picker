@@ -23,6 +23,7 @@ class App extends Component {
 
   doSomethingWithDates = (start, end) => {
     // do something with start and end dates
+    // executed whenever start or end dates are set
   };
 
   render() {
