@@ -6,7 +6,7 @@
 
 ### Setup
 
-    $ git clone https://github.com/beneisnr/date-picker.git
+    $ git clone https://github.com/beneisnr/react-date-picker.git
     $ cd date-picker
     $ npm i
 
