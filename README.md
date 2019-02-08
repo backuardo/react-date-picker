@@ -1,4 +1,4 @@
-# :calendar: date-picker
+# :calendar: react-date-picker
 ![](date-picker.gif)
 
 
