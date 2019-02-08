@@ -27,7 +27,7 @@ class App extends Component {
 
   render() {
     return (
-        <DatePicker handleUpdate={this.updateTimes} />
+        <DatePicker handleUpdate={this.doSomethingWithDates} />
     );
   }
 }
